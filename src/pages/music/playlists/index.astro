@@ -1,0 +1,37 @@
+---
+import MusicLayout from "../../../layouts/MusicLayout.astro";
+import { getCollection, render } from "astro:content";
+
+import Playlist from "../../../components/Playlist.astro";
+
+const curatedLists = await Promise.all(
+    (await getCollection("curatedLists"))
+        .map(async curatedList => {
+            const { Content } = await render(curatedList);
+            return {
+                curatedList,
+                Content
+            };
+        })
+);
+
+
+---
+
+<MusicLayout>
+                    
+    {curatedLists.map(({ curatedList, Content }, playlistIndex) => {
+
+        return (
+            <details open={playlistIndex === 0}>
+                <Playlist
+                    title={curatedList.data.title}
+                    date={curatedList.data.date}
+                >
+                    <Content/>
+                </Playlist>
+            </details>
+        );
+    })}
+    
+</MusicLayout>

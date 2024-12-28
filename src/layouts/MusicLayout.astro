@@ -1,0 +1,156 @@
+---
+import '../assets/styles/reset.css'
+import '../assets/styles/music-details.css'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>music</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+
+	</head>
+
+	<body>
+        <div class="two-column">
+            <div class="sidebar">
+            <div class="picture"></div>
+                <h1>music</h1>
+                
+                <p>a repository of my favorite music including a listening log dated back to 2021, some notes on my favorite songs, albums and artists, and curated playlists</p>
+
+                <p>
+                    <b>last listened:</b><br/>
+                    <span><a href="#" aria-label="external">test song</a> by test artist</span>
+                </p>
+                
+                
+                <p>
+                    <b>on repeat:</b><br/>
+                    <span><a href="#" aria-label="external">test song</a> by test artist</span>
+                </p>
+
+                <!-- get access to last.fm api -->
+
+                <ul role="navigation" aria-label="main">
+                    <li><a href="home">home</a></li>
+                    <li><a href="toybox">toybox</a></li>
+                    <li><a href="sitemap">sitemap</a></li>
+                </ul>
+
+                <p>last updated XX/XX/XXXX<br>inspired by <a href="" aria-label="external">mei</a></p> 
+
+            </div>
+
+            <main>
+                <ul role="navigation" aria-label="music">
+                  <li><a href="/music/log">log</a></li>
+                  <li><a href="/music/favorites">favorites</a></li>
+                  <li><a href="/music/playlists">playlists</a></li>
+                </ul>
+              
+                <section>
+                  <slot />
+                </section>
+            </main>
+        </div>
+  <!-- <script>
+    console.log("MusicLayout inside <body>")
+  </script> -->
+	</body>
+  <!-- <script>
+    console.log("MusicLayout inside <html>")
+  </script> -->
+</html>
+
+<style is:global>
+
+    :root {
+        --display-font: 'Dynapuff';
+        --body-font: 'Laila';
+    }
+
+    h1 {
+        font-family: var(--display-font);
+        display: block;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    b {
+        font-family: var(--display-font);
+        font-weight: normal;
+        font-size: 0.925rem;
+    }
+
+    p {
+        font-family: var(--body-font);
+    }
+
+    main {
+      margin-block: 1em;
+    }
+
+    .picture {
+      background: pink;
+      height: 150px;
+      aspect-ratio: 1/1;
+      margin: 0 auto 3em auto
+    }
+
+    [aria-label="music"] li {
+      background: pink;
+      border: none;
+      padding: 1em;
+      min-width: 10ch;
+      font-family: var(--display-font);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    [aria-label="music"] li a {
+      text-decoration: none;
+    }
+
+    .sidebar {
+        margin: 3em 1em;
+    }
+
+    .sidebar p {
+        text-align: center;
+        margin: 1.5em 2em;
+    }
+
+    [role="navigation"] {
+        display: flex;
+        gap: 1em;
+        padding: 0;
+        list-style: none;
+        justify-content: center;
+    }
+
+    [role="navigation"] li a {
+        font-family: var(--display-font)
+    }
+
+
+    @media all and (width > 700px) {
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+        }
+
+    }
+
+</style>
+
+<script>
+console.log("script tag outside MusicLayout </html>")
+</script>
