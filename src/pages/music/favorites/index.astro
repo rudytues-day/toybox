@@ -1,0 +1,21 @@
+---
+import MusicLayout from "../../../layouts/MusicLayout.astro";
+import { getCollection, render } from "astro:content";
+
+import Playlist from "../../../components/Playlist.astro";
+
+---
+
+<MusicLayout>
+
+    <h1
+        style="margin-bottom: 2em">favorites</h1>
+                    
+<details open>
+    <Playlist
+        title="songs">
+        <p>this page is currently under construction</p>
+    </Playlist>
+</details>
+    
+</MusicLayout>

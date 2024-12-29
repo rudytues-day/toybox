@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+
+import NowLayout from '../../layouts/NowLayout.astro'
+import type { defineConfig } from "astro/config";
+
+---
+
+<NowLayout redirect="{redirect}">
+    <p><a href="/now/[id]">test</a></p>
+</NowLayout>

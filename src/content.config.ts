@@ -22,6 +22,14 @@ const allMusicLogs = defineCollection({
     })
 });
 
+const allNows = defineCollection({
+    loader: glob({ pattern: '**/*.md', base: './src/content/now/'}),
+    schema: z.object({
+        date: z.date(),
+        currently: z.string(),
+    })
+});
+
 const allCuratedLists = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/playlists/curated/'}),
     schema: z.object({
@@ -34,5 +42,6 @@ const allCuratedLists = defineCollection({
 export const collections = {
     'playlists': allPlaylists,
     'musicLogs': allMusicLogs,
-    'curatedLists': allCuratedLists
+    'curatedLists': allCuratedLists,
+    'nows': allNows
 }

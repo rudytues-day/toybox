@@ -1,0 +1,147 @@
+---
+import '../assets/styles/reset.css';
+import '../assets/styles/now.css';
+import {formatDate} from '../assets/scripts/format.js';
+
+const { id, date, currently } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>music</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Caveat+Brush&family=Imprima&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+        <div class="two-column">
+            <aside>
+            <div class="picture"></div>
+                <h1>now</h1>
+                
+                <p>i am currently <strong>{currently}</strong></p>
+
+                <ul role="navigation" aria-label="main">
+                    <li><a href="/">home</a></li>
+                    <li><a href="toybox">toybox</a></li>
+                    <li><a href="sitemap">sitemap</a></li>
+                </ul>
+
+                <p>last updated <strong>{formatDate(date)}</strong><br>inspired by <a href="" aria-label="external">mei</a></p> 
+
+            </aside>
+
+            <main>
+                <slot />
+            </main>
+        </div>
+	</body>
+</html>
+
+<style>
+
+    :root {
+        --display-font: 'Caveat Brush';
+        --body-font: 'Imprima';
+    }
+
+    h1 {
+        font-family: var(--display-font);
+        display: block;
+        font-size: 2.5rem;
+        text-align: center;
+        /* font-weight: bold; */
+    }
+
+    b, strong {
+        /* font-family: var(--display-font); */
+        font-weight: semi-bold;
+        font-size: 0.95rem;
+    }
+
+    p {
+        font-family: var(--body-font);
+    }
+
+    main {
+      margin: 3em 1em;
+    }
+
+    .picture {
+      background: gray;
+      height: 300px;
+      aspect-ratio: 1/1;
+      margin: 0 auto 3em auto
+    }
+
+    [aria-label="music"] li {
+      background: pink;
+      border: none;
+      padding: 1em;
+      min-width: 10ch;
+      font-family: var(--display-font);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    [aria-label="music"] li a {
+      text-decoration: none;
+    }
+
+    aside {
+        margin: 0;
+        padding: 3em 1em;
+        background-color: lightgray
+    }
+
+    aside p {
+        text-align: center;
+        margin: 1.5em 2em;
+    }
+
+    [role="navigation"] {
+        display: flex;
+        gap: 1em;
+        padding: 0;
+        list-style: none;
+        justify-content: center;
+    }
+
+    [role="navigation"] li a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-family: var(--display-font)
+    }
+
+    aside,
+    .two-column {
+        margin: 0;
+    }
+
+    @media all and (width > 700px) {
+
+        aside {
+            padding-block: 10em;
+        }
+
+        main {
+            margin: 2em 2em 2em 2em;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 1em;
+
+        }
+
+    }
+
+</style>

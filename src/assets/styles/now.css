@@ -1,0 +1,25 @@
+main h1,
+main h2 {
+    font-family: var(--display-font);
+    margin-block: 1.25em 1em;
+}
+
+main h1 {
+    font-size: 2.25rem;
+}
+
+main h2 {
+    font-size: 1.75rem;
+    /* margin-block: 1.5em 1em; */
+}
+
+main b, 
+main strong {
+    font-weight: semi-bold;
+    font-size: 0.95rem;
+}
+
+main p,
+main ul {
+    font-family: var(--body-font);
+}

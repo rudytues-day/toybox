@@ -1,0 +1,30 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import NowLayout from '../../layouts/NowLayout.astro';
+import '../../assets/styles/now.css'
+import '../../assets/styles/reset.css'
+
+export async function getStaticPaths() {
+	const pages = await getCollection("nows");
+	return pages.map((page) => {
+		return {
+			params: { id: page.id },
+			props: { 
+                page: page,
+                ...page.data
+			 }
+		}
+	});
+};
+
+const { id } = Astro.params;
+const { page, date, currently } = Astro.props;
+const { Content } = await render(page);
+---
+
+<NowLayout
+    date={date}
+    currently={currently}>
+    <Content />
+</NowLayout>

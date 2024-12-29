@@ -8,7 +8,6 @@ const playlists = await getCollection("playlists");
 ---
 
 <MusicLayout>
-  
                                  
     { playlists.map(async (playlist) => {
       const renderedPlaylist = await render(playlist);
