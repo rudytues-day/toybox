@@ -1,30 +1,48 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection, render } from "astro:content";
-import NowLayout from '../../layouts/NowLayout.astro';
 import '../../assets/styles/now.css'
-import '../../assets/styles/reset.css'
+import NowLayout from '../../layouts/NowLayout.astro';
 
-export async function getStaticPaths() {
-	const pages = await getCollection("nows");
-	return pages.map((page) => {
-		return {
-			params: { id: page.id },
-			props: { 
-                page: page,
-                ...page.data
-			 }
-		}
-	});
-};
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
 
-const { id } = Astro.params;
-const { page, date, currently } = Astro.props;
-const { Content } = await render(page);
+export const getStaticPaths = (async () => {
+	const nows = await getCollection("nows");
+	return nows.map((now : any) => ({
+    	params: { id: now.id },
+    	props: { now, ...now.data },
+	}));
+}) satisfies GetStaticPaths;
+
+// have to redefine the collection again here
+const nows = await getCollection("nows");
+// sort thru the posts by dates
+const nowsByDate = nows.sort((a, b) => b.data.date.valueOf() - a.data.date!.valueOf());
+// grab the current post
+const current = nowsByDate.findIndex(now => now.id === Astro.params.id);
+// grab the current post, length of the collection, and determine both previous and next
+const previous = current + 1 === nowsByDate.length ? undefined : nowsByDate[current + 1];
+const next = current === 0 ? undefined : nowsByDate[current - 1];
+
+const lastUpdate = nowsByDate[0]
+
+const { now, date, currently } = Astro.props;
+const { Content } = await render(now)
 ---
 
 <NowLayout
-    date={date}
-    currently={currently}>
-    <Content />
+	date={date}
+	currently={currently}
+	current={current}
+	previous={previous}
+	next={next}
+	lastUpdate={lastUpdate}
+>
+	<Content />
 </NowLayout>
+
+<style is:inline>
+	main p {
+		margin-block: 1em;
+	}
+</style>

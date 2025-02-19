@@ -1,20 +1,27 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro'
 ---
-
-<main>
-	<h1>toybox</h1>
+<MainLayout>
+	<main>
+		<h1>toybox</h1>
 	
-	<p>this site is currently under construction</p>
+		<p>this site is currently under construction</p>
 	
-	<h2>collections:</h2>
-	<ul>
-		<li><a href="/music/log">music</a></li>
-		<li><s>fun accounts to follow</s></li>
-		<li><a href=`/now/20241229`>now</a></li>
-	</ul>
+		<h2>collections:</h2>
+		<ul>
+			<li><a href="/music/log">music</a></li>
+			<li><s>fun accounts to follow</s></li>
+			<li><a href=`/now/20241229`>now</a></li>
+		</ul>
 	
-	<p><a href="https://rudytues.day">home</a></p>
-</main>
+		<h2>allsorts:</h2>
+		<ul>
+			<li><a href="/allsorts/ascii">ascii</a></li>
+		</ul>
+	
+		<p><a href="https://rudytues.day">home</a></p>
+	</main>
+</MainLayout>
 
 <style>
 	* {

@@ -1,12 +1,13 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from 'astro:content';
+interface Props { date: Date }
 
-import NowLayout from '../../layouts/NowLayout.astro'
-import type { defineConfig } from "astro/config";
+const nows = await getCollection("nows")
 
+// Sort by latest and take the first.
+const mostRecent = nows.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf())[0];
+const recentUrl = `${ Astro.site?.origin }/now/${ mostRecent?.id }`;
 ---
-
-<NowLayout redirect="{redirect}">
-    <p><a href="/now/[id]">test</a></p>
-</NowLayout>
+<head>
+    <meta http-equiv="refresh" content={ `0; url=${ recentUrl }` } />
+</head>

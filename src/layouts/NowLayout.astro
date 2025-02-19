@@ -3,7 +3,7 @@ import '../assets/styles/reset.css';
 import '../assets/styles/now.css';
 import {formatDate} from '../assets/scripts/format.js';
 
-const { id, date, currently } = Astro.props
+const { date, currently, lastUpdate, current, previous, next } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,12 +13,21 @@ const { id, date, currently } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>music</title>
+		<title>now</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Caveat+Brush&family=Imprima&display=swap" rel="stylesheet">
-	</head>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Imprima&family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+        <style>
+            article p {
+                margin-block: 1em;
+            }
+        </style>
+
+    </head>
 
 	<body>
         <div class="two-column">
@@ -34,8 +43,24 @@ const { id, date, currently } = Astro.props
                     <li><a href="sitemap">sitemap</a></li>
                 </ul>
 
-                <p>last updated <strong>{formatDate(date)}</strong><br>inspired by <a href="" aria-label="external">mei</a></p> 
+                <p>last updated <strong>{formatDate(lastUpdate.data.date)}</strong><br>inspired by <a href="https://hellomei.dev" aria-label="external">mei</a></p> 
 
+                    <div id="pagination">
+                        {(next?.id === undefined) ? (
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        ) : (
+                            <a href={`/now/${next.id}`}><i class="fas fa-arrow-left" aria-label="next"></i></a>
+                        )}
+
+                        <p><strong>{formatDate(date)}</strong></p>
+                        
+                        {(previous?.id === undefined) ? (
+                            <a><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        ) : (
+                            <a href={`/now/${previous.id}`}><i class="fas fa-arrow-right" aria-label="previous"></i></a>
+                        )}
+                    </div>
+                
             </aside>
 
             <main>
@@ -47,9 +72,22 @@ const { id, date, currently } = Astro.props
 
 <style>
 
+#pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+[aria-hidden="true"] {
+    opacity: 25%;
+}
+
     :root {
         --display-font: 'Caveat Brush';
-        --body-font: 'Imprima';
+        --body-font: 'Laila';
+        /* imprima */
     }
 
     h1 {
@@ -68,6 +106,7 @@ const { id, date, currently } = Astro.props
 
     p {
         font-family: var(--body-font);
+        margin-block: 1em;
     }
 
     main {
@@ -132,7 +171,7 @@ const { id, date, currently } = Astro.props
         }
 
         main {
-            margin: 2em 2em 2em 2em;
+            margin: 2em 2em 3.5em 2em;
         }
         
         .two-column {
