@@ -1,0 +1,70 @@
+---
+import Image from 'astro/components/Image.astro';
+
+import '../assets/styles/reset.css';
+import TvTropesLogo from '../pages/tvtropes/logo-white.webp';
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>TVTropes</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+
+	</head>
+    <body>
+        <main>
+            <header>
+                <Image
+                    class="logo"
+                    src={TvTropesLogo}
+                    alt="TV Tropes"
+                />
+            </header>
+                <div class="main-container">
+                    <article>
+                        <slot />
+                    </article>
+                </div>
+            <footer>
+            </footer>
+        </main>
+    </body>
+</html>
+
+<style>
+
+body {
+    background-color: #e7e7e8;
+    font-family: sans-serif;
+}
+
+header,
+footer {
+    background-color: #3c4b5e;
+    padding: 1em;
+    /* height: 20px; */
+}
+
+.main-container {
+    padding-top: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,.3);
+}
+
+article {
+    padding: 1em;
+}
+
+.logo {
+    margin: 1em auto;
+}
+
+
+
+</style>

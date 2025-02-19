@@ -1,0 +1,146 @@
+---
+import TvTropesLayout from "../../../layouts/TvTropesLayout.astro"
+import { getEntry, render } from "astro:content";
+
+// const tropes = await getEntry("tropes", "domestication")
+
+---
+<TvTropesLayout>
+
+	<h1><a href="">User Experience</a> <span class="breadcrumb">»</span> <span class="entry-title">Domestication</span> </h1>
+
+	<ul class="subpage-links">
+		<li><a href="">UserExperience</a></li> 
+		<li><a href="">Awesome</a></li> 
+		<!-- <li><a href="">AwesomeMusic</a></li> -->
+		<li><a href="">Characters</a></li>
+		<!-- <li><a href="">FanficRecs</a></li> -->
+		<!-- <li><a href="">FanWorks</a></li> -->
+		<!-- <li><a href="">Franchise</a></li> -->
+		<li><a href="">Fridge</a></li>
+		<li><a href="">Funny</a></li>
+		<li><a href="">Headscratchers</a></li>
+		<li><a href="">Heartwarming</a></li>
+		<!-- <li><a href="">HoYay</a></li> -->
+		<li><a href="">Laconic</a></li>
+		<li><a href="">Music</a></li>
+		<li><a href="">NightmareFuel</a></li>
+		<!-- <li><a href="">Pantheon</a></li> -->
+		<li><a href="">Quotes</a></li>
+		<!-- <li><a href="">Recap</a></li> -->
+		<!-- <li><a href="">ShoutOut</a></li> -->
+		<li><a href="">TearJerker</a></li>
+		<li><a href="">Trivia</a></li>
+		<!-- <li><a href="">WMG</a></li> -->
+		<li><a href="">YMMV</a></li>
+		<!-- <li><a href="">VideoExamples</a></li> -->
+		<!-- <li><a href="">AlternativeCharacterInterpretation</a></li> -->
+		<!-- <li><a href="">BrokenBase</a></li> -->
+		<!-- <li><a href="">ContinuityNod</a></li> -->
+		<!-- <li><a href="">FandomSpecific</a></li> -->
+		<!-- <li><a href="">Fanon</a></li> -->
+		<!-- <li><a href="">FunnyAnuerismMoment</a></li> -->
+		<!-- <li><a href="">Haiku</a></li> -->
+		<!-- <li><a href="">HarsherInHindsight</a></li> -->
+		<!-- <li><a href="">LateArrivalSpoiler</a></li> -->
+		<!-- <li><a href="">Memes</a></li> -->
+		<!-- <li><a href="">MoodWhiplash</a></li> -->
+		<!-- <li><a href="">Timeline</a></li> -->
+		<!-- <li><a href="">WarpAesop</a></li> -->
+		<!-- <li><a href="">WhamEpisode</a></li> -->
+		<!-- <li><a href="">Woobie</a></li> -->
+	</ul>
+
+	<article class="main-article">
+
+		<div class="indent">
+			<em>This is where a quote might be... if I wrote one.</em>
+			<div class="indent">-- Person Being Quoted</div>
+		</div>
+
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam explicabo aliquid enim deserunt repellat dolorem, magni voluptate quidem labore nam aut perferendis similique quaerat officiis perspiciatis. Recusandae possimus rem quia?</p>
+		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, quos?</p>
+	</article>
+
+</TvTropesLayout>
+
+<style>
+
+h1 {
+	font-size: 26px;
+    margin-bottom: 19px;
+    padding-bottom: 18px;
+    /* border-bottom: 1px solid; */
+    box-shadow: inset 0 -1px 0 0 #aeb3ba;
+}
+
+h1 a,
+.main-article a {
+	text-decoration: none;
+	color: #006bb1;
+}
+
+h1 .entry-title {
+	font-weight: 700;
+}
+
+em {
+	font-style: italic;
+	color: #333;
+}
+
+.subpage-links {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0.5em;
+	margin-bottom: 18px;
+	padding: 0;
+	font-size: 0.75rem;
+	list-style: none;
+	marker: none;
+}
+
+.subpage-links li {
+	margin-bottom: 12px;
+}
+
+.subpage-links > li > a {
+	font-size: 0.85rem;
+
+	padding: 6px 8px;
+	border: 2px solid #3c4b5e;
+	border-radius: 20px;
+	text-decoration: none;
+	opacity: 0.8;
+}
+
+.quoteright {
+	background: #fafafa;
+	border-left: 6px solid #fafafa;
+	border-radius: 3px;
+	border-right: 6px solid #fafafa;
+	box-shadow: 0 0 0 1px #cacdd1;
+	clear: right;
+	float: right;
+	font-size: .84em;
+	line-height: 1.512em;
+	margin: 1px 1px 5px 13.5px;
+	max-width: 350px;
+	padding: 6px 0;
+	position: relative;
+	text-align: center;
+	width: inherit;
+	z-index: 2;
+}
+
+p:not([class]) {
+	margin-top: 10px;
+}
+
+.indent {
+	font-size: 0.85em;
+	margin-left: 1.25em;
+	line-height: 2;
+}
+
+</style>

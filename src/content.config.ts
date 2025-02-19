@@ -4,6 +4,8 @@ import { defineCollection, z, type SchemaContext } from 'astro:content';
 
 // 1. Import utilities from `astro:content`
 
+import { tropes } from "./content/tropes/_config";
+
 // 2. Define your collection(s)
 
 const allPlaylists = defineCollection({
@@ -38,6 +40,13 @@ const allCuratedLists = defineCollection({
     })
 });
 
+// const allTropes = defineCollection({
+//     loader: glob({ pattern: '**/*.md', base: './src/content/tropes/'}),
+//     schema: z.object({
+//         date: z.date(),
+//         currently: z.string(),
+//     })
+// });
 
 export const collections = {
     'playlists': allPlaylists,
