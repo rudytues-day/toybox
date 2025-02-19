@@ -1,28 +1,6 @@
 ---
-import MusicLayout from "../../layouts/MusicLayout.astro";
-import { getCollection, render } from "astro:content";
-
-import Playlist from "../../components/Playlist.astro";
-
-const playlists = await getCollection("playlists");
+const musicRedirect = `${ Astro.site?.origin }/music/log`;
 ---
-
-<MusicLayout>
-                                 
-    { playlists.map(async (playlist) => {
-      const renderedPlaylist = await render(playlist);
-      console.log("script inside playlist map")
-      return (
-        <details>
-          <Playlist
-              title={playlist.data.title}
-              date={playlist.data.date}>
-              <renderedPlaylist.Content/>
-          </Playlist>
-        </details>
-        );
-      
-      })
-    }
-    
-</MusicLayout>
+<head>
+    <meta http-equiv="refresh" content={ `0; url=${ musicRedirect }` } />
+</head>
